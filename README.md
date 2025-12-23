@@ -1,77 +1,68 @@
-Group3: Heart Disease Prediction Toolkit
-1. Overview
-Group3 is a specialized R package developed by Sirui Cheng (XJTLU). It provides a robust, automated interface for predicting heart disease risk using a pre-trained Random Forest model.
+# Group3: Heart Disease Prediction Toolkit
 
-The package is engineered to handle common data inconsistencies, making it a reliable tool for both developers and clinical researchers.
+[![R-CMD-check](https://img.shields.io/badge/R--CMD--check-passing-brightgreen)](https://github.com/SiruiCheng-xjtlu/Group3)
 
-2. Key Technical Features
-Smart Data Alignment: Automatically detects and harmonizes input types. It converts raw data into the specific Numeric or Factor formats required by the underlying model.
+## Overview
+**Group3** is a professional R package developed by **Sirui Cheng**. It provides a robust interface for predicting heart disease risk using a pre-trained Random Forest model. The package is specifically designed for clinical research, ensuring that physiological data is accurately processed and analyzed.
 
-Zero-Config Prediction: Users can input categorical variables as simple text strings (e.g., "M", "Flat") without manually managing factor levels or encoding.
+## Key Features
+* **Automated Type Alignment**: The package automatically detects and converts input data into the exact Numeric or Factor formats required by the model.
+* **High Tolerance**: Users can input categorical data as simple strings (e.g., "M", "Flat") without manually defining factor levels.
+* **Clinical Precision**: Validates 11 core physiological features to ensure prediction consistency.
 
-Validation Engine: Ensures all 11 critical clinical parameters are present before execution to prevent runtime errors.
+## Installation
 
+To install the package from your local source directory:
 
-3. Installation
-You can install the development version of Group3 from your local directory using devtools:
-
-# Install dependency if missing
+```R
+# Ensure devtools is installed
 if (!require("devtools")) install.packages("devtools")
 
-# Install the package
+# Install from local path
 devtools::install("path/to/your/Group3")
+```R
+
+## Quick Start
+The primary function predict_heart_disease handles the entire pipeline from data validation to final prediction. Ensure your input data frame uses the correct feature names (PascalCase).
 
 
-4. Quick Start Guide
-The primary function predict_heart_disease() manages the entire pipeline—from data cleaning to final risk assessment.
-
-Usage Example
-
+```R
 library(Group3)
 
-# 1. Define patient data (Strings are handled automatically)
+# Prepare patient data (Strings are automatically handled)
 test_patient <- data.frame(
-    Age            = 50, 
-    Sex            = "M",      # Options: "F", "M"
-    ChestPainType  = "ATA",    # Options: "ASY", "ATA", "NAP", "TA"
-    RestingBP      = 140,
-    Cholesterol    = 230, 
-    FastingBS      = "0",      # Options: "0", "1"
-    RestingECG     = "Normal", # Options: "LVH", "Normal", "ST"
-    MaxHR          = 150, 
+    Age = 50, 
+    Sex = "M",                 # Options: "F", "M"
+    ChestPainType = "ATA",     # Options: "ASY", "ATA", "NAP", "TA"
+    RestingBP = 140,
+    Cholesterol = 230, 
+    FastingBS = "0",           # Options: "0", "1"
+    RestingECG = "Normal",     # Options: "LVH", "Normal", "ST"
+    MaxHR = 150, 
     ExerciseAngina = "N",      # Options: "N", "Y"
-    Oldpeak        = 1.0, 
-    ST_Slope       = "Up"      # Options: "Down", "Flat", "Up"
+    Oldpeak = 1.0, 
+    ST_Slope = "Up"            # Options: "Down", "Flat", "Up"
 )
 
-# 2. Generate Prediction
-# Result: 0 (Low Risk / Healthy) or 1 (Heart Disease Risk)
+# Execute prediction
+# Result 0 = Healthy / Low Risk, 1 = Heart Disease Risk
 prediction <- predict_heart_disease(test_patient)
 print(prediction)
+```R
 
-5. Required Clinical Features
+## Required Features
+To ensure successful prediction, the input data frame must contain the following 11 variables:
 
-Variable	             Description	                Type
-Age	                 Age of the patient	            Numeric
-Sex	                   Gender (F/M)	                Factor
-ChestPainType        Type of chest pain	            Factor
-RestingBP	           Resting blood pressure	        Numeric
-Cholesterol	         Serum cholesterol	            Numeric
-FastingBS	      Fasting blood sugar > 120 mg/dl	    Factor
-RestingECG	   Resting electrocardiogram results	  Factor
-MaxHR	Maximum       heart rate achieved	            Numeric
-ExerciseAngina	    Exercise-induced angina	        Factor
-Oldpeak        ST depression induced by exercise	  Numeric
-ST_Slope	The slope of the peak exercise ST segment	Factor
+Age, Sex, ChestPainType, RestingBP, Cholesterol
 
+FastingBS, RestingECG, MaxHR, ExerciseAngina, Oldpeak, ST_Slope
 
-6. Author & Contact
-Author: Sirui Cheng
-
-Affiliation: Xi'an Jiaotong-Liverpool University (XJTLU)
+## Author
+Sirui Cheng Xi'an Jiaotong-Liverpool University (XJTLU)
 
 Email: Sirui.Cheng23@student.xjtlu.edu.cn
 
-7. License
+## License
 This project is licensed under the MIT License.
+
 
