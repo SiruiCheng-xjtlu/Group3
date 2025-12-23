@@ -14,7 +14,6 @@
 
 To install the package from your local source directory:
 
-```R
 # Ensure devtools is installed
 if (!require("devtools")) install.packages("devtools")
 
