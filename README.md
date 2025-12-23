@@ -20,7 +20,6 @@ if (!require("devtools")) install.packages("devtools")
 # Install from local path
 devtools::install("path/to/your/Group3")
 
-
 # Quick Start
 The primary function predict_heart_disease handles the entire pipeline from data validation to final prediction. Ensure your input data frame uses the correct feature names (PascalCase).
 library(Group3)
