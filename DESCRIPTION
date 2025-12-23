@@ -1,0 +1,17 @@
+Package: Group3
+Title: Heart Disease Prediction Toolkit
+Version: 0.1.0
+Authors@R: 
+    person("Sirui", "Cheng", 
+           email = "Sirui.Cheng23@student.xjtlu.edu.cn", 
+           role = c("aut", "cre"))
+Description: A professional R package for heart disease risk prediction 
+    using Random Forest models. Designed for clinical data analysis.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Imports: 
+    randomForest,
+    stats
